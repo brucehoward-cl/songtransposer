@@ -12,12 +12,15 @@ def clear_screen():
 
 #clear_screen()
 #print(str(instructions.instructions))
-chord_progression = input("Enter a chord progression: ")
+user_song_input = input("Enter a chord progression: ")
+chord_progression = re.findall(r'[\w]+\b', user_song_input)
+print(chord_progression)
 
-test = re.findall(r'[\w]+\b', chord_progression)
-song = song.Song(test)
+song = song.Song(chord_progression)
 
-print(song.chords)
-print(song.chord_progression[0])
-print(song.chord_progression[1])
+user_new_key = input("Enter a new key: ")
+#new_key = re.match(r'[a-gA-G]', user_new_key)
+
+song.transpose(user_new_key)
+print(song.chord_progression)
 
