@@ -1,5 +1,6 @@
 import chords
 import factory
+import notes
 
 class Song:
     # chords = []   # make this immutable!
@@ -17,9 +18,15 @@ class Song:
         print(f'song key is: {self.key}')
 
     def transpose(self, new_key):
-        #index = notes.NOTES.index(new_key)
+        old_key_index = notes.NOTES.index(str(self.key))
+
+#        new_key_index = notes.NOTES.index(new_key)
+        value_in_NOTES = [e for e in notes.NOTES if e.startswith(new_key)]
+        new_key_index = notes.NOTES.index(value_in_NOTES[0])
+
+        interval_change = new_key_index - old_key_index
         for chord in self.chord_progression:
-            print(f'transposing {chord} by a hardcoded # of halfsteps')
-            chord.transpose(1)
+            print(f'transposing {chord} by {interval_change} halfsteps')
+            chord.transpose(interval_change)
 
 

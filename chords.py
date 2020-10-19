@@ -39,7 +39,7 @@ class MinorChord(IChord):
         if (index_for_fifth) > 11:
             index_for_fifth -= 12
         self.fifth = notes.NOTES[index_for_fifth]
-        print(f'(from Chord); root: {self.root}; third: {self.third}; fifth: {self.fifth}')
+        print(f'(from Chord {self.name}); root: {self.root}; third: {self.third}; fifth: {self.fifth}')
 
     def transpose(self, number_of_halfsteps):
         self.root = self.convert_note(self.root, number_of_halfsteps)
