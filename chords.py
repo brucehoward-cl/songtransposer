@@ -6,7 +6,6 @@ class IChord:
     """This class defines common methods for all Chord classes"""
     def __init__(self, name):
         self.name = name
-        #self.root = name[0]
 
     def __str__(self):
         return f'{self.name}'

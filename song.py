@@ -1,6 +1,7 @@
 import chords
 import factory
 from notes import SCALE
+import re
 
 class Song:
     def __init__(self, injected_factory):
@@ -36,7 +37,11 @@ class Song:
 
     @staticmethod
     def validate_progression(user_input):
+        validity = True
         for each_entry in user_input:
-            entries = [note for note in SCALE if note.startswith(each_entry) or note.endswith(each_entry)]
-            print(f'from validate_progression: {entries}')
-        return True
+            valid_entry = re.match(r'[A-G][#b]?', each_entry)
+            if not bool(valid_entry):
+                print(f'{each_entry} is not a valid chord name/type')
+                validity = False
+        return validity
+            
