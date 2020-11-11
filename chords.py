@@ -1,18 +1,20 @@
 from notes import SCALE
+import re
 
 
 class IChord:
     """This class defines common methods for all Chord classes"""
     def __init__(self, name):
         self.name = name
-        self.root = name[0]
+        #self.root = name[0]
 
     def __str__(self):
         return f'{self.name}'
 
     def convert_note(self, note, halfsteps):
         """This method locates a note in the scale, adds the number of halfsteps, and returns a new note"""
-        place_in_SCALE = [n for n in SCALE if n.startswith(note)]
+#        place_in_SCALE = [n for n in SCALE if n.startswith(note)]
+        place_in_SCALE = [n for n in SCALE if n.startswith(note) or n.endswith(note)]  #one place where a single letter variable name makes sense
         new_note_index = SCALE.index(place_in_SCALE[0]) + halfsteps
         if new_note_index > 11:     #This section effectively wraps the index around the scale
             new_note_index -= 12
@@ -34,6 +36,10 @@ class MinorChord(IChord):
 
     def __init__(self, name):
         super().__init__(name)
+
+        self.root_shortname = re.match(r'[A-G][#b]?', name).group(0)
+        self.root = [note for note in SCALE if note.startswith(self.root_shortname) or note.endswith(self.root_shortname)][0]
+        self.minor = True
 
         index_for_third = SCALE.index(self.root) + 3
         if (index_for_third) > 11:
@@ -57,6 +63,9 @@ class MajorChord(IChord):
 
     def __init__(self, name):
         super().__init__(name)
+
+        self.root_shortname = re.match(r'[A-G][#b]?', name).group(0)
+        self.root = [note for note in SCALE if note.startswith(self.root_shortname) or note.endswith(self.root_shortname)][0]
 
         index_for_third = SCALE.index(self.root) + 4
         if (index_for_third) > 11:

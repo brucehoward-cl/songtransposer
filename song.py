@@ -33,3 +33,10 @@ class Song:
             print(f'\ntransposing {chord} by {interval_change} halfsteps')
             chord.transpose(interval_change)
 
+
+    @staticmethod
+    def validate_progression(user_input):
+        for each_entry in user_input:
+            entries = [note for note in SCALE if note.startswith(each_entry) or note.endswith(each_entry)]
+            print(f'from validate_progression: {entries}')
+        return True

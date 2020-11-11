@@ -28,15 +28,19 @@ while True:
         print(str(instructions.instructions))
         continue
 
-    chord_progression = re.findall(r'[\w]+\b', user_song_input)
+#    chord_progression = re.findall(r'[\w]+\b', user_song_input)
+    chord_progression = re.findall(r'[\w#]+', user_song_input)
+    print(f'chord progression = {chord_progression}')
 
-    song.insert_chord_progression(chord_progression) 
-    
-    user_new_key = input("\nEnter a new key: ")
-    new_key = re.search(r'[a-gA-G]?[#b]?', user_new_key)
+    if Song.validate_progression(chord_progression):
+        song.insert_chord_progression(chord_progression) 
+    else:
+        continue
 
+    user_new_key = input("\nEnter a new key: ").upper()
+    new_key = re.search(r'[a-gA-G]?[#b]?', user_new_key).group(0)
 
-    song.transpose(new_key.group(0))
+    song.transpose(new_key)
     print('\n\n***Transposed chord progression:')
     print([chord.name for chord in song.chord_progression]) #using a list comprehension
 
