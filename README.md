@@ -11,8 +11,8 @@ Disclaimer: I didn't spend a lot of time on making the user interface robust. Bu
 ### TO EXECUTE APP:   python master_loop.py
 
 ### ASSUMPTIONS
-This application is actually written with someone who has some musical knowledge. That is where its main value rests.
-However, instructions are written such that anyone can use it, even if they don't know anything about music.
+This application is actually written for someone who has some musical knowledge. That is where its main value rests.
+However, instructions are written such that anyone can use it.
 
 ### FEATURES
   ###### 1.  Master Loop.  
