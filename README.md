@@ -16,9 +16,9 @@ FEATURES
   2.  Create class, create an instance, and populate it
       - there are numerous examples, but the Song class in the song.py file is one. It's used in the Master Loop
   3.  Create a dictionary or list, populate it, retrieve at least one value and use it
-      - in notes.py I create NOTES as a list. In chords.IChord, in the convert_note method I retrieve a NOTE item,
-        then use it to get its own index, so that the number of halfsteps can be computed between the current song
-        key and the new desired key
+      - In notes.py I create NOTES as a list. 
+      - In chords.IChord, in the convert_note method, I retrieve a NOTE items, then use them to compute the number 
+        of halfsteps between the current note and the newly desired note
   4.  Create and call at least 3 functions, at least one of which returns a value that gets used
       - From the Song class, I call insert_chord_progression() and transpose()
       - In class Factory, I created get_chord() which returns the proper chord (major, minor, etc). It is called
@@ -31,14 +31,13 @@ FEATURES
         in using RE to accomplish certain tasks.
   6.  Build a conversion tool that converts user input to another type and displays it
       - As mentioned in (5), user input is converted to a list of Chord objects that is stored in class Song.
-      - That list of chord objects is eventually iterated over and printed, after it has been transposed to the\
+      - That list of chord objects is eventually iterated over and printed, after it has been transposed to the
         desired key
   7.  (Bonus feature not actually required)  Implemented Factory Method Design pattern
       - A Factory class was created that creates the appropriate chord type (major, minor, etc) 
       - The Factory object is 'injected' into the Song object
       - This pattern allows the Factory class to be updated to handle other chord types as time and need dictate.
-      - Admittedly it's not a perfect implementation, but some of that can be attributed to Python's not strong 
-        type implementation.
+      - Admittedly it's not a perfect implementation, but it's a decent approximation.
         
 
 

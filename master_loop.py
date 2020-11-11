@@ -21,13 +21,12 @@ print(str(instructions.instructions))
 while True:
     user_song_input = input("\nEnter a chord progression (Q to Quit; I for instructions): ")
     if re.search(r'Q', user_song_input, re.I):
-        break;
+        break
 
     if re.match(r'\s*I', user_song_input, re.I):
+        clear_screen()
         print(str(instructions.instructions))
         continue
-    else:
-        print("missed")
 
     chord_progression = re.findall(r'[\w]+\b', user_song_input)
 
@@ -35,11 +34,10 @@ while True:
     
     user_new_key = input("\nEnter a new key: ")
     new_key = re.search(r'[a-gA-G]?[#b]?', user_new_key)
-    # print(f'result from re.match {new_key.group(0)}')
 
 
     song.transpose(new_key.group(0))
-    print('Transposed chord progression:')
+    print('\n\n***Transposed chord progression:')
     print([chord.name for chord in song.chord_progression]) #using a list comprehension
 
 

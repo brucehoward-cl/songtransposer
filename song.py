@@ -1,6 +1,6 @@
 import chords
 import factory
-from notes import NOTES
+from notes import SCALE
 
 class Song:
     def __init__(self, injected_factory):
@@ -9,35 +9,27 @@ class Song:
 
 
     def insert_chord_progression(self, chord_prog):
+        """This method takes a list of strings that represent individual chord names in the progression.
+        It creates a chord object for each chord name and appends it to its chord_progression list""" 
         self.chords = chord_prog
-        self.chord_progression = [] # re-initialize the chord_progression
+        self.chord_progression = [] # re-initialize the chord_progression for successive uses
         for chord_type in self.chords:
             chord = self.chord_factory.get_chord(chord_type)
             self.chord_progression.append(chord)
-        self.key = self.chord_progression[0]
+        self.key = self.chord_progression[0].root
         print(f'song key is: {self.key}')
 
 
     def transpose(self, new_key):
-        old_key_index = NOTES.index(str(self.key))
+        """This method takes a string that represents to what key this song needs to be transposed.
+        It stores the new key as the song key, and transposes each individual chord in its chord_progression."""
+        old_key_index = SCALE.index(str(self.key))
 
-        value_in_NOTES = [e for e in NOTES if e.startswith(new_key) or e.endswith(new_key)]
-        new_key_index = NOTES.index(value_in_NOTES[0])
+        entry_in_SCALE = [note for note in SCALE if note.startswith(new_key) or note.endswith(new_key)]
+        new_key_index = SCALE.index(entry_in_SCALE[0])
 
         interval_change = new_key_index - old_key_index
         for chord in self.chord_progression:
             print(f'\ntransposing {chord} by {interval_change} halfsteps')
             chord.transpose(interval_change)
-
-
-    # def __init__(self, chord_prog, injected_factory):
-    #     self.chords = chord_prog
-    #     self.chord_factory = injected_factory
-
-    #     for chord_type in self.chords:
-    #         chord = self.chord_factory.get_chord(chord_type)
-    #         self.chord_progression.append(chord)
-
-    #     self.key = self.chord_progression[0]
-    #     print(f'song key is: {self.key}')
 
