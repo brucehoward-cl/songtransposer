@@ -5,6 +5,9 @@ a time-consuming complicated process. This software solves that problem.
 SPECIAL INSTRUCTIONS
 None! Nothing needed other than a python engine.
 Instructions on how to use the interface will print upon execution.
+Disclaimer: I didn't spend a lot of time on making the user interface robust. But it'll work for what it's supposed to do.
+
+TO EXECUTE APP:   python master_loop.py
 
 ASSUMPTIONS
 This application is actually written with someone who has some musical knowledge. That is where its main value rests.
@@ -17,15 +20,14 @@ FEATURES
       - there are numerous examples, but the Song class in the song.py file is one. It's used in the Master Loop
   3.  Create a dictionary or list, populate it, retrieve at least one value and use it
       - In notes.py I create NOTES as a list. 
-      - In chords.IChord, in the convert_note method, I retrieve a NOTE items, then use them to compute the number 
-        of halfsteps between the current note and the newly desired note
+      - In song.py, in the song class, 'chord_progression' is a list of Chord classes
   4.  Create and call at least 3 functions, at least one of which returns a value that gets used
-      - From the Song class, I call insert_chord_progression() and transpose()
-      - In class Factory, I created get_chord() which returns the proper chord (major, minor, etc). It is called
+      - In song.py *Song class*, I call *insert_chord_progression()* and *transpose()*
+      - In factory.py *Factory class*, I created *get_chord()* which returns the proper chord (major, minor, etc). It is called
         in the Song.insert_chord_progression() method to populate the Song's chord progression 
       - there's other examples which I think are pretty noticeable
   5.  Implement a regular expression to ensure data is stored and displayed in same format
-      - Regular expressions are used in the master loop to parse the input string into distinct chord types. 
+      - In *master_loop.py* REs used to parse the input string into distinct chord types. 
         Those types are then converted and stored as Chord objects. Eventually those chord objects get printed
         out again.  This is a loose interpretation of the requirement but it at least demonstrates some skill
         in using RE to accomplish certain tasks.
@@ -33,11 +35,13 @@ FEATURES
       - As mentioned in (5), user input is converted to a list of Chord objects that is stored in class Song.
       - That list of chord objects is eventually iterated over and printed, after it has been transposed to the
         desired key
+      - *The conversion tool can be considered as the collaboration of these classes: Song, Factory, IChord* 
   7.  (Bonus feature not actually required)  Implemented Factory Method Design pattern
       - A Factory class was created that creates the appropriate chord type (major, minor, etc) 
-      - The Factory object is 'injected' into the Song object
+      - The Factory object is 'injected' into the Song object. Even though Factory has to have knowledge of
+         the Chord classes, Song does not.
       - This pattern allows the Factory class to be updated to handle other chord types as time and need dictate.
-      - Admittedly it's not a perfect implementation, but it's a decent approximation.
+      - Admittedly it's not a perfect implementation, but I think it's a decent approximation.
         
 
 
