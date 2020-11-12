@@ -49,7 +49,7 @@ class MinorChord(IChord):
         if (index_for_fifth) > 11:
             index_for_fifth -= 12
         self.fifth = SCALE[index_for_fifth]
-        print(f'(from Chord {self.name}); \troot: {self.root}; third: {self.third}; fifth: {self.fifth}')
+        print(f'(from Chord {self.name}); \troot: {self.root}; \tthird: {self.third}; \tfifth: {self.fifth}')
 
     def transpose(self, number_of_halfsteps):
         super().transpose(number_of_halfsteps)
@@ -75,7 +75,7 @@ class MajorChord(IChord):
         if (index_for_fifth) > 11:
             index_for_fifth -= 12
         self.fifth = SCALE[index_for_fifth]
-        print(f'(from Chord {self.name}); \troot: {self.root}; third: {self.third}; fifth: {self.fifth}')
+        print(f'(from Chord {self.name}); \troot: {self.root}; \tthird: {self.third}; \tfifth: {self.fifth}')
 
     def transpose(self, number_of_halfsteps):
         super().transpose(number_of_halfsteps)
