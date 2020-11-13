@@ -11,6 +11,9 @@ class Factory:
         if chord_type.find('min') > 0:
             #create minor chord
             chord = chords.MinorChord(chord_type)
+        elif chord_type.find('7') > 0:
+            #create dominant 7th
+            chord = chords.Dominant7Chord(chord_type)
         else:
             #create major chord
             chord = chords.MajorChord(chord_type)
