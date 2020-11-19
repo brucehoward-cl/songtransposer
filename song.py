@@ -39,8 +39,9 @@ class Song:
     def validate_progression(user_input):
         validity = True
         for each_entry in user_input:
-            valid_entry = re.match(r'[A-G][#b]?', each_entry)
-            if not bool(valid_entry):
+#            valid_entry = re.match(r'^[A-G]{1}[#b]?(min)?(maj)?7?', each_entry)  
+            valid_entry = re.match(r'^[A-G]{1}[#b]?(min|maj|7)?', each_entry)  #this may not be perfect but it catches a lot
+            if valid_entry.string != valid_entry.group(0):
                 print(f'{each_entry} is not a valid chord name/type')
                 validity = False
         return validity

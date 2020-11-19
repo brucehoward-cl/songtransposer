@@ -28,7 +28,7 @@ while True:
         print(str(instructions.instructions))
         continue
 
-    chord_progression = re.findall(r'[\w#]+', user_song_input) # to add 7ths add \d after the +
+    chord_progression = re.findall(r'[\w#]+', user_song_input) 
     print(f'chord progression = {chord_progression}')
 
     if Song.validate_progression(chord_progression):
